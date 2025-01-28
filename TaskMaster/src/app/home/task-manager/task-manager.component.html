@@ -1,0 +1,14 @@
+<form #taskForm="ngForm" (ngSubmit)="onSubmitTask()">
+  <ion-item>
+    <ion-input [(ngModel)]="customTask.label" name="label" placeholder="Label" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="customTask.description" name="description" placeholder="description" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="onCancel()">Cancel</ion-button>
+    <ion-button type="submit">Submit</ion-button>
+  </ion-item>
+</form>

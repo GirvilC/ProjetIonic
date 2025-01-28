@@ -1,20 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>
+        TaskMaster
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ng-container *ngIf="TaskList.length > 0 && isLoaded; else noTask">
+    <ion-list>
+      <ion-item *ngFor="let task of TaskList">
+        {{task.label}}
+        <br>
+        {{task.description}}
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ng-template #noTask>
+    Aucune tâche en cours
+  </ng-template>
+   
+
+   <ion-button (click)="onCreateTask()">Create a new task</ion-button>
 </ion-content>
