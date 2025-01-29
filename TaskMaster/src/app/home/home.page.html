@@ -15,6 +15,11 @@
         {{task.description}}
         <br>
         {{task.limitDate}}
+        <br>
+        <ion-item>
+          <ion-button (click)="onUpdateTask(task)">Update Task</ion-button>
+          <ion-button (click)="onDeleteTask(task.id)">Delete Task</ion-button>
+        </ion-item>
       </ion-item>
     </ion-list>
   </ng-container>

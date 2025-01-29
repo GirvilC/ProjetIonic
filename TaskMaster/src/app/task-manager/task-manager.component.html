@@ -1,4 +1,4 @@
-<form #taskForm="ngForm" (ngSubmit)="onSubmitTask()">
+<form #taskForm="ngForm" name="taskForm" (ngSubmit)="onSubmitTask()">
   <ion-item>
     <ion-input [(ngModel)]="customTask.label" name="label" placeholder="Label" required></ion-input>
   </ion-item>
@@ -12,7 +12,14 @@
   </ion-item>
 
   <ion-item>
+    <ion-button (click)="addLocation()">Add location</ion-button>
+    <ion-text *ngIf="successMessage !== ''" color="success">{{successMessage}}</ion-text>
+  </ion-item>
+
+  <ion-item>
     <ion-button (click)="onCancel()">Cancel</ion-button>
     <ion-button type="submit">Submit</ion-button>
   </ion-item>
+
+  <ion-item *ngIf="errorMessage !== '' "><ion-text color="danger">{{errorMessage}}</ion-text></ion-item>
 </form>

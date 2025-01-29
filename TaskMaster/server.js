@@ -14,26 +14,28 @@ let tasks = [
 ];
 
 //Get All
-app.get('/gettasks', (req, res) => {
+app.get('/tasks', (req, res) => {
     res.json(tasks);
 });
 
 //Get by Id
-app.get('gettasks/:id', (req, res) => {
+app.get('/tasks/:id', (req, res) => {
     const task = tasks.find(t => t.id === parseInt(req.params.id));
     task ? res.json(task) : res.status(404).json({ message: "Tâche non trouvé ou inexistante" });
 });
 
 //Set
-app.post('/settasks', (req, res) => {
+app.post('/tasks', (req, res) => {
     const newTask = { id: tasks.length + 1, ...req.body };
     tasks.push(newTask);
+    console.log(tasks);
     res.status(201).json(newTask);
 });
 
 //Update
-app.put('/updatetasks/:id', (req, res) => {
+app.put('/tasks/:id', (req, res) => {
     const index = tasks.findIndex(t => t.id === parseInt(req.params.id));
+    console.log(req.params.id);
     if(index !== -1) {
         tasks[index] = { ...tasks[index], ...req.body };
         res.json(tasks[index]);
@@ -43,7 +45,7 @@ app.put('/updatetasks/:id', (req, res) => {
 });
 
 //Delete
-app.delete('deletetasks/:id', (req, res) => {
+app.delete('/tasks/:id', (req, res) => {
     tasks = tasks.filter(t => t.id !== parseInt(req.params.id));
     res.json({ message: "Tâche supprimée avec succès" });
 });
