@@ -8,6 +8,10 @@
   </ion-item>
 
   <ion-item>
+    <ion-input [(ngModel)]="customTask.limitDate" type="date" name="limiteDate" required></ion-input>
+  </ion-item>
+
+  <ion-item>
     <ion-button (click)="onCancel()">Cancel</ion-button>
     <ion-button type="submit">Submit</ion-button>
   </ion-item>

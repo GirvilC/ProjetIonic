@@ -27,7 +27,6 @@ export class TaskManagerComponent  implements OnInit {
 
   public onSubmitTask() {
     this.customTask.status = 'OnGoing';
-    this.customTask.limitDate = 'Demain';
     this.data.customTask = this.customTask;
     this.dialogRef.close(this.data);
   }
